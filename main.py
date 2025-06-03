@@ -13,17 +13,13 @@ class TernaryCodeGUI:
         self.root.title("Ternary Code Encoder/Decoder")
         self.style = ttk.Style(theme='darkly')
         self.setup_ui()
-
-        # Initialize code variables
         self.code = None
         self.encoded_msg = None
 
     def setup_ui(self):
-        # Main container
         self.main_frame = ttk.Frame(self.root, padding=3)
         self.main_frame.pack(fill=BOTH, expand=YES)
 
-        # Code parameters frame
         param_frame = ttk.Labelframe(self.main_frame, text="Code Parameters", padding=3)
         param_frame.pack(fill=X, pady=5)
 
@@ -42,11 +38,9 @@ class TernaryCodeGUI:
             bootstyle=(SUCCESS, OUTLINE)
         ).grid(row=2, column=0, columnspan=2, pady=2)
 
-        # Code info frame
         self.info_frame = ttk.Labelframe(self.main_frame, text="Code Information", padding=5)
         self.info_frame.pack(fill=X, pady=2)
 
-        # Encoding frame
         self.encode_frame = ttk.Labelframe(self.main_frame, text="Encoding", padding=5)
         self.encode_frame.pack(fill=X, pady=2)
 
@@ -64,7 +58,6 @@ class TernaryCodeGUI:
         self.encoded_label = ttk.Label(self.encode_frame, text="Encoded message: ")
         self.encoded_label.pack(anchor=W, padx=5, pady=2)
 
-        # Error frame
         self.error_frame = ttk.Labelframe(self.main_frame, text="Add Error", padding=5)
         self.error_frame.pack(fill=X, pady=2)
 
@@ -79,7 +72,6 @@ class TernaryCodeGUI:
             bootstyle=(DANGER, OUTLINE)
         ).pack(pady=2)
 
-        # Results frame
         self.results_frame = ttk.Labelframe(self.main_frame, text="Decoding Results", padding=2)
         self.results_frame.pack(fill=X, pady=5)
 
@@ -108,7 +100,6 @@ class TernaryCodeGUI:
             self.code = TernaryCode(n, k)
             self.show_code_info()
 
-            # Enable other sections
             self.msg_entry.config(state=NORMAL)
             self.error_entry.config(state=NORMAL)
 
@@ -116,7 +107,6 @@ class TernaryCodeGUI:
             messagebox.showerror("Input Error", f"Invalid parameters: {str(e)}")
 
     def show_code_info(self):
-        # Clear previous info
         for widget in self.info_frame.winfo_children():
             widget.destroy()
 
@@ -125,7 +115,6 @@ class TernaryCodeGUI:
         ttk.Label(self.info_frame, text=f"Minimum distance: {self.code.actual_dist}").pack(anchor=W)
         ttk.Label(self.info_frame, text=f"Correctable errors: {self.code.max_errors}").pack(anchor=W)
 
-        # Show matrices in scrollable text widgets
         ttk.Label(self.info_frame, text="Generator matrix:").pack(anchor=W, pady=(10, 0))
         gen_text = ttk.Text(self.info_frame, height=4, width=50)
         gen_text.pack(fill=X, padx=5)
@@ -178,11 +167,9 @@ class TernaryCodeGUI:
             if any(x not in {0, 1, 2} for x in error):
                 raise ValueError("Only 0, 1, 2 are allowed")
 
-            # Add error
             received = (self.encoded_msg + error) % 3
             self.received_label.config(text=f"Received message: {' '.join(map(str, received))}")
 
-            # Decode
             decoded, errs = self.code.decode(received)
             original_msg = self.msg_entry.get().strip().split()
 
