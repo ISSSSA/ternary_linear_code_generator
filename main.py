@@ -20,39 +20,39 @@ class TernaryCodeGUI:
 
     def setup_ui(self):
         # Main container
-        self.main_frame = ttk.Frame(self.root, padding=10)
+        self.main_frame = ttk.Frame(self.root, padding=3)
         self.main_frame.pack(fill=BOTH, expand=YES)
 
         # Code parameters frame
-        param_frame = ttk.Labelframe(self.main_frame, text="Code Parameters", padding=10)
+        param_frame = ttk.Labelframe(self.main_frame, text="Code Parameters", padding=3)
         param_frame.pack(fill=X, pady=5)
 
-        ttk.Label(param_frame, text="Length (n):").grid(row=0, column=0, padx=5, pady=5, sticky=W)
+        ttk.Label(param_frame, text="Length (n):").grid(row=0, column=0, padx=5, pady=2, sticky=W)
         self.n_entry = ttk.Entry(param_frame)
         self.n_entry.grid(row=0, column=1, padx=5, pady=5)
 
-        ttk.Label(param_frame, text="Dimension (k):").grid(row=1, column=0, padx=5, pady=5, sticky=W)
+        ttk.Label(param_frame, text="Dimension (k):").grid(row=1, column=0, padx=5, pady=2, sticky=W)
         self.k_entry = ttk.Entry(param_frame)
-        self.k_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.k_entry.grid(row=1, column=1, padx=5, pady=2)
 
         ttk.Button(
             param_frame,
             text="Generate Code",
             command=self.generate_code,
             bootstyle=(SUCCESS, OUTLINE)
-        ).grid(row=2, column=0, columnspan=2, pady=5)
+        ).grid(row=2, column=0, columnspan=2, pady=2)
 
         # Code info frame
         self.info_frame = ttk.Labelframe(self.main_frame, text="Code Information", padding=5)
-        self.info_frame.pack(fill=X, pady=5)
+        self.info_frame.pack(fill=X, pady=2)
 
         # Encoding frame
         self.encode_frame = ttk.Labelframe(self.main_frame, text="Encoding", padding=5)
-        self.encode_frame.pack(fill=X, pady=5)
+        self.encode_frame.pack(fill=X, pady=2)
 
         ttk.Label(self.encode_frame, text="Message (k digits 0-2):").pack(anchor=W, padx=5, pady=2)
         self.msg_entry = ttk.Entry(self.encode_frame)
-        self.msg_entry.pack(fill=X, padx=5, pady=5)
+        self.msg_entry.pack(fill=X, padx=5, pady=2)
 
         ttk.Button(
             self.encode_frame,
@@ -66,21 +66,21 @@ class TernaryCodeGUI:
 
         # Error frame
         self.error_frame = ttk.Labelframe(self.main_frame, text="Add Error", padding=5)
-        self.error_frame.pack(fill=X, pady=5)
+        self.error_frame.pack(fill=X, pady=2)
 
         ttk.Label(self.error_frame, text="Error vector (n digits 0-2):").pack(anchor=W, padx=5, pady=2)
         self.error_entry = ttk.Entry(self.error_frame)
-        self.error_entry.pack(fill=X, padx=5, pady=5)
+        self.error_entry.pack(fill=X, padx=5, pady=2)
 
         ttk.Button(
             self.error_frame,
             text="Add Error and Decode",
             command=self.add_error_and_decode,
             bootstyle=(DANGER, OUTLINE)
-        ).pack(pady=5)
+        ).pack(pady=2)
 
         # Results frame
-        self.results_frame = ttk.Labelframe(self.main_frame, text="Decoding Results", padding=5)
+        self.results_frame = ttk.Labelframe(self.main_frame, text="Decoding Results", padding=2)
         self.results_frame.pack(fill=X, pady=5)
 
         self.received_label = ttk.Label(self.results_frame, text="Received message: ")
