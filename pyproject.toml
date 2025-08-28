@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "teranary-linear-code-generator"
+version = "0.1.0"
+description = "Генератор 3-чного линейного кода"
+authors = ["ISSSSA <52818700+ISSSSA@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+numpy = "^2.3.2"
+pillow = "^11.3.0"
+pytest = "^8.4.1"
+ruff = "^0.12.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
