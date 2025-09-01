@@ -97,13 +97,11 @@ class TestTernaryCodeUnit:
         encoded = code.encode(test_message)
 
         # Декодируем (должно работать идеально для правильного слова)
-        decoded_msg, dist = code.decode(encoded)
+        decoded_msg = code.decode(encoded)
 
         # Проверяем структуру возвращаемых значений
         assert decoded_msg is not None
-        assert isinstance(decoded_msg, tuple)
         assert len(decoded_msg) == code.dim
-        assert dist >= 0
 
 
 class TestTernaryCodeEdgeCases:

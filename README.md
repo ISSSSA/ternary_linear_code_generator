@@ -7,7 +7,7 @@ poetry run python main.py
 ``` 
 ## Запуск тестов
 ```bash
-python -m pytest tests/unit/test_code.py
+ poetry run python -m pytest tests/unit/test_code.py
 
 ```
 Автор:
