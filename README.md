@@ -3,7 +3,7 @@
 ```bash
 pip install poetry
 poetry install
-poetry run python main.py
+poetry run python ternary_code.py
 ``` 
 Автор:
 Воронов Игорь Сергеевич
