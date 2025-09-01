@@ -56,15 +56,9 @@ class TernaryCode:
         return k <= n - d + 1
 
     def _validate_params(self, n: int, k: int, d: int):
-        if not self._hamming_bound(n, k, d):
-            return False
-        if not self._singlton_bound(n, k, d):
-            return False
-        if not self._gilbert_bound(n, k, d):
-            return False
-        return True
+        return all((self._hamming_bound(n, k, d),self._singlton_bound(n, k, d),self._gilbert_bound(n, k, d)))
 
-    def decode(self, received: Any):
+    def decode(self, received: list) -> list:
         k, n = self.gen_matrix.shape
         code_map = {
             tuple(np.dot(m, self.gen_matrix) % 3): m
@@ -86,9 +80,9 @@ class TernaryCode:
                     best_msg = code_map[cw]
                     best_dist = dist
 
-        return best_msg, best_dist
+        return best_msg
 
-    def encode(self, data: np.array) -> int:
+    def encode(self, data: np.array) -> list:
         return np.dot(data, self.gen_matrix) % 3
 
 

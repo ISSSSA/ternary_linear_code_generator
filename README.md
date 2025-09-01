@@ -3,7 +3,12 @@
 ```bash
 pip install poetry
 poetry install
-poetry run python ternary_code.py
+poetry run python main.py
 ``` 
+## Запуск тестов
+```bash
+python -m pytest tests/unit/test_code.py
+
+```
 Автор:
 Воронов Игорь Сергеевич

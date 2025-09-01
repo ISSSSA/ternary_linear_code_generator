@@ -72,9 +72,9 @@ class TestTernaryCodeUnit:
         code = TernaryCode(4, 2)
 
         # Тестируем границы для валидных параметров
-        assert code._singlton_bound(4, 2, 2) == True
-        assert code._hamming_bound(4, 2, 2) == True
-
+        assert code._singlton_bound(4, 2, 3) == True
+        assert code._hamming_bound(4, 2, 3) == True
+        assert code._gilbert_bound(4, 2, 3) == True
 
     @pytest.mark.parametrize("n,k,expected", [
         (4, 2, True),  # Валидные параметры
